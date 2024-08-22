@@ -1,0 +1,156 @@
+EP-01 | How JavaScript Works 🔥& Execution Context
+
+1. What is the first core fundamental in JavaScript?
+A. Everything in javascript happens inside an execution context.
+
+2. Define execution context?
+A. Execution context is a big box and it has two components in it:
+    i. The first component of execution context is known as memory component so this is a place where all the variables & functions are stored as a key value pair and this memory component is also known as variable environment. 
+    ii. The Second component of execution context is the code component so this is the place where code is executed one line at a time and this code component is also known as thread of execution.
+
+3. Define JavaScript?
+A. JavaScript is a synchronous single-threaded language.
+
+So when we say single-threaded that means javascript can only execute one command at a time.
+
+And when we say synchronous single-threaded that means javascript can only execute one command at a time and in a specific order that means it will only go to the next line once the current line is finish executing.
+
+4.  var n = 2;
+    function square (num) {
+      var ans = num * num;
+      return ans;
+    }
+    var square2 = square(n);
+    var square4 = square(4);
+
+    How execution context is created with the help of javascript program on the above example or How the above whole javascript code is run behind the scene?
+A. So when we run the whole above given javascript code then a global execution context is created which is like a big box and which has two components that are memory component and code component. This execution context is created in two phases so the first phase is known as creation phase which is also known as memory creation phase and it is very critical phase.
+
+So if we have the above given javascript code in the first phase of memory creation javascript skims through the whole program line by line and it will allocate memory to all the variables & functions. So as soon as javascript encounter line one that is var n = 2 then it allocate memory to n by reserving a memory space to n into memory component. So similarly, javascript goes to the line 2 & it sees that there is also a function which is named as square so it will also allocate a memory to square. So when it allocate memory to n it stores a special value which is known as undefined and in case of function it literally stores the whole function code inside the memory space. And now it also allocate memory to square2 & square4 and as these are another variables so it store undefined for them.
+
+// EP-10 | Closures in JS 🔥
+
+- What the most basic example of Closures?
+A. For that let create a function like:
+1 function x() {
+2    var a = 7;
+3    function y() {
+4        console.log(a);
+5    }
+6    y();
+7 }
+8 x();
+
+So we know above line no. 4 will print 7 on to the console after javascript executed the above code. So this is what closure is so if we put a debugger on line no. 4 & run the above code then in scopes we'll see a: 7 inside the Closure scope.
+
+- what does Closure means?
+A. Closure basically means function along with its lexical scope bundles together forms a closure.
+
+- Why Closure look something like:
+Closure(x)
+    a: 7
+
+in browser > devtool > Scope after javascript executing below code:
+1 function x() {
+2    var a = 7;
+3    function y() {
+4        console.log(a);
+5    }
+6    y();
+7 }
+8 x();
+A. So inside function y it forms a closure with the variable which was part of x lexical scope so function y was bind to variable of x so that means it forms a closure & it has access to parent lexical scope. So this is what known as closure.
+
+- Can we assign function to a variable? If yes, then how?
+A. Yes! We can assign function to a variable like:
+function x() {
+    var a = function y() {
+        console.log(a);
+    }
+}
+x();
+
+And the above code is perfectly valid javascript.
+
+- Can we pass function inside a function as a parameter? If yes, then how?
+A. Yes! We can pass function inside a function as a parameter like:
+function x() {
+    var a = 7;
+    y();
+}
+x(function y(){
+    console.log(a);
+})
+
+And the above code is perfectly valid javascript.
+
+- Can we return function out of function also? If yes, then how?
+A. Yes! We can return the function out of function also like:
+function x() {
+    var a = 7;
+    function y() {
+        console.log(a);
+    }
+    return y;
+}
+x();
+
+And the above code is perfectly valid javascript.
+
+- What does return y means below:
+function x() {
+    var a = 7;
+    function y() {
+        console.log(a);
+    }
+    return y;
+}
+x();
+
+And how closure come into picture and become more complicated when we return function y outside?
+A. So y literally is like the function itself:
+y() {
+    console.log(a);
+}
+
+So once we invoke x() then it return y and it return y to the place where function was invoked so let grab it into variable to see what it is and let see what the return value of the function x call will be so for that lets just do:
+function x() {
+    var a = 7;
+    function y() {
+        console.log(a);
+    }
+    return y;
+}
+const z = x();
+console.log(z);
+
+So when javascript execute the above code then it print function y on console like:
+f y() {
+    console.log(a);
+}
+
+And now this z has this function y inside it. And suppose there are thousand of lines after z initialization and then at some point in our program we just want to call the function z like:
+1 function x() {
+2    var a = 7;
+3    function y() {
+4        console.log(a);
+5    }
+6    return y;
+7 }
+8 const z = x();
+9 console.log(z);
+10 z();
+
+And we're trying to execute z outside and a is not there in the global scope and x is gone right as it's no longer exist after line no. 8 so once javascript execute above code it will print 7 so here come closure into picture so when we have return function y from function x then function y still maintain their- lexical scope so they remember where they are actually present right so though function x is no longer exist and nothing is there but still this y function its lexical scope where it came from so it came from x function right so it remembered that there is something known as a so it has the binding strong there.
+
+So we say in a simple way that when we return y right so not just function y code was returned but a closure was returned so the closure enclosed function y along with lexical scope so these was returned and it was then put inside z. So when we execute z somewhere else in our program right it still remembers the reference to a and try to find out the value of a and print it.
+
+- Do returning the function y below directly instead of returning just y is one & the same thing?
+function x() {
+    var a = 7;
+    return function y() {
+        console.log(a);
+    }
+}
+x();
+A. Yes! Returning the function y in above code is the same thing if we return just y.
