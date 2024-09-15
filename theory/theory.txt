@@ -154,3 +154,5 @@ function x() {
 }
 x();
 A. Yes! Returning the function y in above code is the same thing if we return just y.
+
+12:16
