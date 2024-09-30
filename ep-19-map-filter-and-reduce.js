@@ -192,30 +192,68 @@ function findMax(arr){
 console.log(findMax(arr));
 */
 
+/*
 // USE CASE 4:
-const arr=[5, 1, 3, 2, 6];
+const arr = [5, 1, 3, 2, 6];
 
 // sum or max
-function findMax(arr){
-    let max = 0;
+function findMax(arr) {
+  let max = 0;
 
-    for (let i = 0; i < arr.length; i++) {
-        if(arr[i] > max) {
-            max = arr[i];
-        }
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > max) {
+      max = arr[i];
     }
+  }
 
-    return max;
+  return max;
 }
 
 console.log(findMax(arr));
 
-const output = arr.reduce(function (acc, curr) {
-    if(curr > acc) {
-        acc = curr;
-    }
+const output = arr.reduce(function (max, curr) {
+  if (curr > max) {
+    max = curr;
+  }
 
-    return acc;
-}, 0)
+  return max;
+}, 0);
+
+console.log(output);
+*/
+
+/*
+// Advance level map
+// USE CASE 1:
+const users = [
+  { firstName: "akshay", lastName: "saini", age: 26 },
+  { firstName: "donald", lastName: "trump", age: 75 },
+  { firstName: "elon", lastName: "musk", age: 50 },
+  { firstName: "deepika", lastName: "padukone", age: 26 },
+];
+
+const output = users.map((x) => x.firstName + " " + x.lastName);
+console.log(output);
+*/
+
+// USE CASE 2:
+const users = [
+  { firstName: "akshay", lastName: "saini", age: 26 },
+  { firstName: "donald", lastName: "trump", age: 75 },
+  { firstName: "elon", lastName: "musk", age: 50 },
+  { firstName: "deepika", lastName: "padukone", age: 26 },
+];
+
+// { 26 : 2, 75: 1, 50 : 1}
+
+const output = users.reduce(function (acc, curr) {
+  if (acc[curr.age]) {
+    acc[curr.age] = ++acc[curr.age];
+  } else {
+    acc[curr.age] = 1;
+  }
+
+  return acc;
+}, {});
 
 console.log(output);
