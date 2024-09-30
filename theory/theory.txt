@@ -155,4 +155,16 @@ function x() {
 x();
 A. Yes! Returning the function y in above code is the same thing if we return just y.
 
-12:16
+EP-19 | map, filter & reduce 🙏
+
+- Do map, reduce and filter are higher order function in javascript?
+A. Yes! The map, reduce and filter are higher order function in javascript.
+
+- What is map function?
+A. The map function is basically is use to transform an array.
+
+- What is filter function?
+A. The filter function is use to filter the value inside an array based on some logic.
+
+- What is reduce function?
+A. The reduce actually doesn't reduce anything so reduce function is basically used in a place where we've to take all the elements of an array or iterate over all elements of an array and come up with a single value out of them. This reduce function takes function as an argument which takes 2 parameters 1st one is acc thats accumulator and 2nd one is curr thats current.
