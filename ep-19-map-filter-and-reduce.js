@@ -129,6 +129,7 @@ console.log(output);
 */
 
 // reduce
+/*
 // USE CASE 1:
 const arr=[5, 1, 3, 2, 6];
 
@@ -144,3 +145,77 @@ function findSum(arr){
 }
 
 console.log(findSum(arr));
+*/
+
+/*
+// USE CASE 2:
+const arr=[5, 1, 3, 2, 6];
+
+// sum or max
+function findSum(arr){
+    let sum = 0;
+
+    for (let i = 0; i < arr.length; i++) {
+        sum = sum + arr[i];        
+    }
+
+    return sum;
+}
+
+console.log(findSum(arr));
+
+const output = arr.reduce(function (acc, curr) {
+    acc = acc + curr;
+    return acc;
+}, 0)
+
+console.log(output);
+*/
+
+/*
+// USE CASE 3:
+const arr=[5, 1, 3, 2, 6];
+
+// sum or max
+function findMax(arr){
+    let max = 0;
+
+    for (let i = 0; i < arr.length; i++) {
+        if(arr[i] > max) {
+            max = arr[i];
+        }
+    }
+
+    return max;
+}
+
+console.log(findMax(arr));
+*/
+
+// USE CASE 4:
+const arr=[5, 1, 3, 2, 6];
+
+// sum or max
+function findMax(arr){
+    let max = 0;
+
+    for (let i = 0; i < arr.length; i++) {
+        if(arr[i] > max) {
+            max = arr[i];
+        }
+    }
+
+    return max;
+}
+
+console.log(findMax(arr));
+
+const output = arr.reduce(function (acc, curr) {
+    if(curr > acc) {
+        acc = curr;
+    }
+
+    return acc;
+}, 0)
+
+console.log(output);

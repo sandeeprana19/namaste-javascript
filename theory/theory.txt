@@ -167,4 +167,9 @@ A. The map function is basically is use to transform an array.
 A. The filter function is use to filter the value inside an array based on some logic.
 
 - What is reduce function?
-A. The reduce actually doesn't reduce anything so reduce function is basically used in a place where we've to take all the elements of an array or iterate over all elements of an array and come up with a single value out of them. This reduce function takes function as an argument which takes 2 parameters 1st one is acc thats accumulator and 2nd one is curr thats current.
+A. The reduce actually doesn't reduce anything so reduce function is basically used in a place where we've to take all the elements of an array or iterate over all elements of an array and come up with a single value out of them. This reduce function takes function as 1st argument which takes 2 parameters 1st one is acc thats accumulator and 2nd one is curr thats current. So basically when we write like:
+const output = arr.reduce(function (acc, curr){});
+
+So the above function which we pass as an argument basically iterate over each & every element of this array(arr) so this reduce basically iterate over each & every element of this array so this curr represent each value of an array and this accumulator basically is used to accumulate the values which are present in the array.
+
+And the 2nd argument of reduce function is accumulator any initial value.
