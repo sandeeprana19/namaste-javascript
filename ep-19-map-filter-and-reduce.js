@@ -236,7 +236,9 @@ const output = users.map((x) => x.firstName + " " + x.lastName);
 console.log(output);
 */
 
-// USE CASE 2:
+/*
+// Advance level filter
+// USE CASE 1:
 const users = [
   { firstName: "akshay", lastName: "saini", age: 26 },
   { firstName: "donald", lastName: "trump", age: 75 },
@@ -257,3 +259,39 @@ const output = users.reduce(function (acc, curr) {
 }, {});
 
 console.log(output);
+*/
+
+/*
+// Chaining
+// USE CASE 1:
+const users = [
+  { firstName: "akshay", lastName: "saini", age: 26 },
+  { firstName: "donald", lastName: "trump", age: 75 },
+  { firstName: "elon", lastName: "musk", age: 50 },
+  { firstName: "deepika", lastName: "padukone", age: 26 },
+];
+
+const output = users.filter((x) => x.age < 30).map((x) => x.firstName);
+
+console.log(output);
+*/
+
+/*
+// Advance level reduce
+// USE CASE 1:
+const users = [
+  { firstName: "akshay", lastName: "saini", age: 26 },
+  { firstName: "donald", lastName: "trump", age: 75 },
+  { firstName: "elon", lastName: "musk", age: 50 },
+  { firstName: "deepika", lastName: "padukone", age: 26 },
+];
+
+const output = users.reduce(function (acc, curr) {
+  if (curr.age < 30) {
+    acc.push(curr.firstName);
+  }
+  return acc;
+}, []);
+
+console.log(output);
+*/

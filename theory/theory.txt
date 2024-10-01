@@ -173,3 +173,6 @@ const output = arr.reduce(function (acc, curr){});
 So the above function which we pass as an argument basically iterate over each & every element of this array(arr) so this reduce basically iterate over each & every element of this array so this curr represent each value of an array and this accumulator basically is used to accumulate the values which are present in the array.
 
 And the 2nd argument of reduce function is accumulator any initial value.
+
+- Can we chain map, filter and reduce functions if require?
+A. Yes! We can chain map, filter and reduce function as per requirement.
