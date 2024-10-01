@@ -197,3 +197,4 @@ A. Yes! The asynchronous programming in javascript exist because callback exist.
 A. The following are the two important issues that we face while writing callback:
 1. Callback hell.
 2. Inversion of control.
+
