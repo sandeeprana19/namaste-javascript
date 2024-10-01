@@ -176,3 +176,24 @@ And the 2nd argument of reduce function is accumulator any initial value.
 
 - Can we chain map, filter and reduce functions if require?
 A. Yes! We can chain map, filter and reduce function as per requirement.
+
+EP-01 | Callback Hell
+
+- What is callback hell?
+A. So one callback inside another callback inside another api or some if statement and random things happening makes this callback hell. And our code start to grow horizontally instead vertically so this is a callback hell.
+
+- Describe inversion of control?
+A. Inversion of control is the another problem we see while using callback. So inversion of control is like we loose the control of our code when we're using callback. For example:
+api.createOrder(cart, function() {
+    api.proceedToPayment();
+})
+
+Now, in the above code we're creating a order and then we gave this callback function which we passed as 2nd argument above to createOrder api and now we as a developer are sitting back & relax & we're blindly trusting createOrder api. Now, we're expecting that create order function at some point of time will create an order & wil call our function back and this is very very risky because this proceedToPayment api is an important piece of our code and what we did is we gave the control of our program to createOrder api and now it is the responsibility of createOrder api to call our function back and we're blindly trusting createOrder api. And now we don't know createOrder api must have been in other service or some other developer wrote it or an intern wrote it right so there could be lots of bug inside createOrder api so what if our callback function was never called so can happen right because we don't what is the code written in createOrder api & we're just blindly trusting it. What if our callback function proceedToPayment happen twice because we don't what is happening in createOrder api. So whenever we have callback function and we pass it to some other function we're giving the control of our function to some other code and we don't know what's happening behind the scenes now right so this is the very important problem that we face when we're using callbacks & we as a developer don't realize this but this is very important & risky thing which we need to take care of.
+
+- Do asynchronous programming in javascript exist because callback exist?
+A. Yes! The asynchronous programming in javascript exist because callback exist.
+
+- What are the two important issues that we face while writing callback?
+A. The following are the two important issues that we face while writing callback:
+1. Callback hell.
+2. Inversion of control.
