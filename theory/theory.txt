@@ -198,3 +198,32 @@ A. The following are the two important issues that we face while writing callbac
 1. Callback hell.
 2. Inversion of control.
 
+EP-05 | Promise APIs + Interview Questions 🔥
+
+- Why the Promise.all is use and what is the contract for it? Also describe about Promise.all() getting success and rejected use cases respectively?
+A. So suppose if we've to make parallel api calls and get the result. So its a very important and popular use case. So lets take a hypothetical example, there're ten ids so lets call it as user ids and we've an api call for user info and we want to make ten parallel apis call and get the result for ten different users so that's where we'll use Promise.all() kind of apis.
+
+Now, Promise.all() is used to handle multiple promises together if there're multiple apis call and multiple promises then it will handle that. So the contract of Promise.all() is it takes an array of promises as an input but when in documentation it is iterable so what we'll pass inside all() is an iterable so an array is an iterable but most of the time we'll use array only so let's stick to an array for now.
+
+Success use case:
+So let's assume that we've three promises or three apis call but we can have multiple as much number if we want to right but right now we're just concerned about three so suppose there're three promise p1, p2 and p3 like:
+Promise.all([p1, p2, p3]);
+
+So what happen when we write above code and pass p1, p2 and p3 then it will make three parallel apis call and get the result. So suppose this p1 takes 3s then suppose p2 takes 1s and suppose p3 take 2s to get the result or resolved or fulfilled respectively like in the diagram 1.1.1. And suppose all of them are success and they didn't failed so in that case the output of above code will an array with the result of all these three promises right. So what it do is it will make an api call then it will collect all this result then it will give it inside an array and it will it back. Just like we've Array.map() where we given an array and return an array similarly the above code will return an array with value of all the results something like:
+[val1, val2, val3];
+
+So the above val1 is the result of p1 and val2 is the result of p2 and val3 is the result of p3. As we know, the 1st api took 3s, the 2nd took 1s and the 3rd took 2s but the final Promise.all() will take 3s so basically after 3s it give us this result: [val1, val2, val3] which is basically our output because Promise.all() will make all these apis call in parallel but it will wait for all of them to finish then it will collect the result and it will give us this result and this [val1, val2, val3] will be the output over here so it gives us an array of output. So this is how the success case will behave like in the diagram 1.1.2.
+
+Rejected use case:
+So suppose after 1s p2 get rejected so as soon as any of these promises get rejected Promise.all() will throw an error and Promise.all() will also be a failure and whatever it will get from that rejected promise it will throw the same error as its result so the output will an error and this will be same error which return by p2 like in the diagram 2.1.1.
+
+In this case, p2 takes 1s and after 1s it got error so that means after 1s we'll see an error so it will even wait for other promises get successful or rejected or whatever. Now, whenever we make an api call or the promise is created or executed so we can't cancel the promise in between as its isn't possible in javascript at this point of time. So these p1 and p2 promise will eventually except or reject as it depend on their own fate but Promise.all() will get reject as soon as any of these promise get reject so it will not wait for all the promises. So basically its kind of all or none so all the promises are success so it will gie us the collective result and if any one of them fails that means the whole promise chain fails right. And suppose if p3 2s promise got rejected then after 2s it will be rejected.
+
+So this is how Promise.all() works.
+
+- What if we just want result from successful promise and we don't care one of our promises fails?
+A. In this case, we've one more promise api to handle this case it is known as Promise.allSettled(). So suppose if we pass in an array of p1, p2 and p3 like:
+Promise.allSettled([p1, p2, p3])
+
+And if all of them get successful and p1 takes 3s and p2 takes 1s and p3 takes 2s so after 3s we'll get the same result just like Promise.all() so like in the diagram 3.1.1. But this success case output [val1, val2, val3] will be different in case of failure. So if suppose p2 get rejected after 1s then it will still wait for all promises to settled whether they are success or failure it doesn't matter. So after 1s p2 promise will fail, after 2s we'll get result of p3 and after 3s we'll get result of p1 and all these things are happening in parallel. So it will get 3s for all these three to get settled irrespective of success or failure it will give us all the result so basically it will give us [val1, err2, val3] like in the diagram 3.1.2.
+
