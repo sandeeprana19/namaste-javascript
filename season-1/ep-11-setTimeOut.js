@@ -37,18 +37,17 @@ x();
 */
 
 // USE CASE 4:
-/*
-function x() {
-  for (var i = 1; i <= 5; i++) {
-    setTimeout(() => {
-      console.log(i);
-    }, i * 1000);
-  }
-  console.log("Namaste JavaScript");
-}
-
-x();
-*/
+// function x() {
+//   // const start = Date.now(); // Capture the start time
+//   for (var i = 1; i <= 5; i++) {
+//     setTimeout(() => {
+//       console.log(i);
+//       // console.log(`Value: ${i}, Time Elapsed: ${(Date.now() - start) / 1000}s`);
+//     }, i * 3000);
+//   }
+//   console.log("Namaste JavaScript");
+// }
+// x();
 
 // USE CASE 5:
 /*
